@@ -19,6 +19,7 @@ sudo apt-get install -y libatlas-base-dev
 sudo apt-get install -y libjasper-dev
 sudo apt-get install -y python3-pip
 sudo apt-get install -y python-pip
+sudo apt-get install -y ipmitool openipmi freeipmi i2c-tools
 
 pip install click Flask future iso8601 itsdangerous Jinja2 MarkupSafe numpy opencv-python picamera pip PyYAML RPi.GPIO serial setuptools Werkzeug
 pip3 install click Flask future iso8601 itsdangerous Jinja2 MarkupSafe numpy opencv-python picamera pip PyYAML RPi.GPIO serial setuptools Werkzeug
