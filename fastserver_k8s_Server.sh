@@ -18,6 +18,8 @@ sudo apt-get install -y libhdf5-serial-dev
 sudo apt-get install -y libatlas-base-dev
 sudo apt-get install -y libjasper-dev
 sudo apt-get install -y install net-tools
+sudo apt-get install -y ipmitool openipmi freeipmi i2c-tools
+
 apt-get update && apt-get install -y apt-transport-https curl
 curl -s https://packages.cloud.google.com/apt/doc/apt-key.gpg | apt-key add -
 cat <<EOF >/etc/apt/sources.list.d/kubernetes.list
