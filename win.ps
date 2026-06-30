@@ -1,0 +1,53 @@
+# Core Development & AI Tools
+winget install --id Microsoft.VisualStudioCode --silent
+winget install --id Microsoft.VisualStudio.2022.Community --silent
+winget install --id GitHub.Git --silent
+winget install --id Nodejs.Nodejs --silent
+winget install --id Python.Python.3.12 --silent
+winget install --id Rustlang.Rustup --silent
+winget install --id Anysphere.Cursor --silent
+
+# Browsers & Internet
+winget install --id Google.Chrome --silent
+winget install --id Microsoft.Edge --silent
+winget install --id OpenVPN.OpenVPNConnect --silent
+winget install --id Cloudflare.Warp --silent
+
+# Utilities & Hardware Drivers
+winget install --id 7zip.7zip --silent
+winget install --id AnyDeskSoftware.AnyDesk --silent
+winget install --id Balena.Etcher --silent
+winget install --id Logitech.OptionsPlus --silent
+winget install --id pCloud.pCloudDrive --silent
+
+# Communication & Productivity
+winget install --id LINE.LINE --silent
+winget install --id Microsoft.OneDrive --silent
+
+Write-Host "Batch installation complete!" -ForegroundColor Cyan
+# 1. Check if WSL is already installed
+$wslCheck = Get-Command wsl -ErrorAction SilentlyContinue
+
+if ($wslCheck) {
+    Write-Host "WSL is already enabled. Proceeding to install Ubuntu..." -ForegroundColor Cyan
+    # Installs the default Ubuntu distribution
+    wsl --install -d Ubuntu
+} else {
+    Write-Host "Enabling WSL and Virtual Machine Platform features..." -ForegroundColor Yellow
+    
+    # Enable Virtual Machine Platform
+    dism.exe /online /enable-feature /featurename:VirtualMachinePlatform /all /norestart
+    
+    # Enable Windows Subsystem for Linux
+    dism.exe /online /enable-feature /featurename:Microsoft-Windows-Subsystem-Linux /all /norestart
+    
+    Write-Host "Installing Ubuntu..." -ForegroundColor Yellow
+    # This core command enables WSL features and grabs Ubuntu simultaneously
+    wsl --install -d Ubuntu
+    
+    Write-Host "--------------------------------------------------------" -ForegroundColor Green
+    Write-Host "INSTALLATION SUCCESSFUL!" -ForegroundColor Green
+    Write-Host "Please RESTART your computer to finalize the installation." -ForegroundColor Windows
+    Write-Host "After rebooting, Ubuntu will open automatically to complete setup." -ForegroundColor Windows
+    Write-Host "--------------------------------------------------------" -ForegroundColor Green
+}
